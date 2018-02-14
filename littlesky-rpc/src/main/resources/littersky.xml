@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:littlesky="http://www.springframework.org/schema/littlesky"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+	http://www.springframework.org/schema/littlesky
+	http://www.springframework.org/schema/littlesky.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+    <bean id="userService" class="com.btx.service.imp.UserServiceImpl"/>
+
+    <bean id="userService1" class="com.btx.service.imp.UserServiceImpl"/>
+    <littlesky:registry address="192.168.0.102:6379" protocol="redis" />
+
+
+
+    <littlesky:protocol name="http" host="127.0.0.21" port="8080" contentpath="xxx"/>
+    <littlesky:service interface="com.btx.service.IUserService" protocol="http" ref="userService"/>
+
+    <littlesky:service interface="com.btx.service.IUserService" protocol="http" ref="userService1"/>
+
+   <!-- 	<littlesky:service interface="com.btx.service.IUserService" protocol="httputil" ref="userService0" />
+    <littlesky:service interface="com.btx.service.IUserService" protocol="httputil" ref="userService1" /> -->
+     <!--<littlesky:service interface="com.btx.service.IUserService" protocol="httputil" ref="userService2" />
+    <littlesky:service interface="com.btx.service.IUserService" protocol="httputil" ref="userService3" />-->
+
+  <!--  <littlesky:reference id="user1" protocol="httputil" interface="com.btx.service.IUserService" loadbalance="abc"/> -->
+
+  <!--<littlesky:reference id="userService1" protocol="httputil" interface="com.btx.service.IUserService" loadbalance="roundrobin"/>
+  <littlesky:reference id="userService0" protocol="httputil" interface="com.btx.service.IUserService" loadbalance="roundrobin"/>
+-->
+  <!--<littlesky:reference id="product" protocol="httputil" interface="com.btx.service.IProduct" loadbalance="afd"/>-->
+
+</beans>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="littlesky-client:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="littlesky-service.war">
+      <element id="artifact" artifact-name="littlesky-client:war exploded" />
+    </root>
+  </artifact>
+</component>
